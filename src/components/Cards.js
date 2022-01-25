@@ -1,11 +1,7 @@
 import React from 'react';
 import './Cards.css';
 
-export default function Cards({ pokemon, setLoading, setPage, query, setQuery }) {
-  const handleClick = () => {
-    setLoading(true);
-    setPage((prevState) => ++prevState);
-  };
+export default function Cards({ pokemon, setLoading, query, setQuery }) {
   return (
     <>
       <input
@@ -23,13 +19,14 @@ export default function Cards({ pokemon, setLoading, setPage, query, setQuery })
         Search
       </button>
       <div>
-        {pokemon.slice(0, 10).map((item) => (
-          <p key={item.id}>
-            <span>{item.pokemon}</span>
-            <img src={item.url_image}></img>
-          </p>
-        ))}
-        <button onClick={handleClick}>Next Page</button>
+        <ul>
+          {pokemon.map((item) => (
+            <div key={item.id}>
+              <li>{item.pokemon}</li>
+              <img src={item.url_image}></img>
+            </div>
+          ))}
+        </ul>
       </div>
     </>
   );
