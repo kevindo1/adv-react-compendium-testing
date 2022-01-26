@@ -1,5 +1,5 @@
 import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import Home from './Home';
 
 test('Should render Pokemon page views', async () => {
