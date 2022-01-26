@@ -25,7 +25,7 @@ test('Should be able to search Pokemon', async () => {
   render(<Home />);
 
   //grab all the consts for the search bar
-  const searchBar = await screen.findByRole('textbox');
+  const searchBar = screen.getByRole('textbox');
   const pokemonName = 'magikarp';
 
   // what the user will actually do, in the search bar, search a name
