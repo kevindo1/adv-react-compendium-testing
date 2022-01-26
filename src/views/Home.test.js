@@ -34,10 +34,10 @@ test('Should be able to search Pokemon', async () => {
   // the results that user gets back
   const pokemon = await screen.findAllByText(pokemonName, { exact: false });
 
-  // const result = pokemon.map((item) => item.textContent);
+  const result = pokemon.map((item) => item.textContent);
 
-  // const handleNameCheck = (name) => name.toLowerCase().includes(pokemonName);
+  const handleNameCheck = (name) => name.toLowerCase().includes(pokemonName);
 
-  // const hasSameName = result.every(handleNameCheck);
-  // expect(hasSameName).toBe(true);
+  const hasSameName = result.every(handleNameCheck);
+  expect(hasSameName).toBe(true);
 });
