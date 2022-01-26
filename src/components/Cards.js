@@ -7,6 +7,7 @@ export default function Cards({ pokemon, setLoading, query, setQuery }) {
       <input
         id="filled-basic"
         type="textbox"
+        name="name"
         placeholder="Search Name"
         label="Search Name"
         variant="filled"
