@@ -24,14 +24,12 @@ test('Should render Pokemon page views', async () => {
 test('Should be able to search Pokemon', async () => {
   render(<Home />);
 
-  //grab all the consts for the search bar, button
+  //grab all the consts for the search bar
   const searchBar = await screen.findByRole('textbox');
-  const searchButton = screen.getByRole('button');
   const pokemonName = 'magikarp';
 
   // what the user will actually do, in the search bar, search a name
   userEvent.type(searchBar, pokemonName);
-  userEvent.click(searchButton);
 
   // the results that user gets back
   const pokemon = await screen.findAllByText(pokemonName, { exact: false });

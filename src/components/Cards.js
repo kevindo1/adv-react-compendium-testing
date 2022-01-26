@@ -4,18 +4,20 @@ import './Cards.css';
 export default function Cards({ pokemon, setLoading, query, setQuery }) {
   return (
     <>
-      <input
-        id="filled-basic"
-        type="textbox"
-        name="name"
-        placeholder="Search Name"
-        label="Search Name"
-        variant="filled"
-        value={query}
-        onChange={(e) => {
-          setQuery(e.target.value);
-        }}
-      ></input>
+      <form>
+        <input
+          id="filled-basic"
+          type="textbox"
+          name="name"
+          placeholder="Search Name"
+          label="Search Name"
+          variant="filled"
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        ></input>
+      </form>
       <button className="search-button" onClick={() => setLoading(true)}>
         Search
       </button>
