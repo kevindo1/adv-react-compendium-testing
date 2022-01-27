@@ -1,6 +1,26 @@
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Home from './Home';
+import { rest } from 'msw';
+import { setupServer } from 'msw/node';
+
+const pokemon = {};
+
+const server = setupServer(
+  rest.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?`, (req, res, ctx) => {
+    const select = req.url.searchParams.get('select');
+    if (select === '*') {
+      return res(ctx.json());
+    }
+    return res(ctx.status(500));
+  })
+);
+
+// 🚨 Listen for server start
+beforeAll(() => server.listen(server));
+
+// 🚨 Close server when complete
+afterAll(() => server.listen());
 
 test('Should render Pokemon page views', async () => {
   render(<Home />);
