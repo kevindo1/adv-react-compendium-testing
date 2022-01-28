@@ -707,23 +707,23 @@ test('Should render Pokemon page views', async () => {
   expect(searchButton).toBeInTheDocument();
 });
 
-// test('Should be able to search Pokemon', async () => {
-//   render(<Home />);
+test('Should be able to search Pokemon', async () => {
+  render(<Home />);
 
-//   //grab all the consts for the search bar
-//   const searchBar = await screen.findByRole('textbox');
-//   const pokemonName = 'magikarp';
+  //grab all the consts for the search bar
+  const searchBar = await screen.findByRole('textbox');
+  const pokemonName = 'venusaur';
 
-//   // what the user will actually do, in the search bar, search a name
-//   userEvent.type(searchBar, pokemonName);
+  // what the user will actually do, in the search bar, search a name
+  userEvent.type(searchBar, pokemonName);
 
-//   // the results that user gets back
-//   const pokemon = await screen.findAllByText(pokemonName, { exact: false });
+  // the results that user gets back
+  const pokemon = await screen.findAllByText(pokemonName, { exact: false });
 
-//   const result = pokemon.map((item) => item.textContent);
+  const result = pokemon.map((item) => item.textContent);
 
-//   const handleNameCheck = (name) => name.toLowerCase().includes(pokemonName);
+  const handleNameCheck = (name) => name.toLowerCase().includes(pokemonName);
 
-//   const hasSameName = result.every(handleNameCheck);
-//   expect(hasSameName).toBe(true);
-// });
+  const hasSameName = result.every(handleNameCheck);
+  expect(hasSameName).toBe(true);
+});
