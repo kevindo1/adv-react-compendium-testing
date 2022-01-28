@@ -678,7 +678,10 @@ const pokemon = {
 };
 const server = setupServer(
   rest.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`, (req, res, ctx) => {
-    return res(ctx.json(pokemon));
+    const select = req.url.searchParams.get('pokemon');
+    if (select === 'venusaur') {
+      return res(ctx.json(pokemon));
+    }
   })
 );
 
