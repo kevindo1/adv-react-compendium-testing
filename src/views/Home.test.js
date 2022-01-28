@@ -678,10 +678,7 @@ const pokemon = {
 };
 const server = setupServer(
   rest.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`, (req, res, ctx) => {
-    const select = req.url.searchParams.get('pokemon');
-    if (select === 'venusaur') {
-      return res(ctx.json(pokemon));
-    }
+    return res(ctx.json(pokemon));
   })
 );
 
@@ -709,6 +706,15 @@ test('Should render Pokemon page views', async () => {
   const searchButton = screen.getByRole('button', { name: /search/i });
   expect(searchButton).toBeInTheDocument();
 });
+
+server.use(
+  rest.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`, (req, res, ctx) => {
+    const select = req.url.searchParams.get('pokemon');
+    if (select === 'venusaur') {
+      return res(ctx.json(pokemon));
+    }
+  })
+);
 
 test('Should be able to search Pokemon', async () => {
   render(<Home />);
