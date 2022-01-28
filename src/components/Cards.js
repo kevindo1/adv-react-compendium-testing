@@ -13,7 +13,7 @@ export default function Cards({ pokemon, setLoading, query, setQuery }) {
           label="Search Name"
           variant="filled"
           value={query}
-          onChange={(e) => {
+          onInput={(e) => {
             setQuery(e.target.value);
           }}
         ></input>

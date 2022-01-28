@@ -1,5 +1,4 @@
 import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import Home from './Home';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
@@ -707,48 +706,3 @@ test('Should render Pokemon page views', async () => {
   const searchButton = screen.getByRole('button', { name: /search/i });
   expect(searchButton).toBeInTheDocument();
 });
-
-// const server2 = setupServer(
-//   rest.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex`, (req, res, ctx) => {
-//     const select = req.url.searchParams.get('pokemon');
-//     if (select === 'venusaur') {
-//       return res(ctx.json(pokemon));
-//     }
-//   })
-// );
-
-// // 🚨 Listen for server start
-// beforeAll(() => server2.listen());
-
-// // 🚨 Close server when complete
-// afterAll(() => server2.close());
-
-// test('Should be able to search Pokemon', async () => {
-//   server2.use(
-//     rest.get('https://uzgiamkrbapxufnwdrja.supabase.co/rest/v1/users', (req, res, ctx) => {
-//       const select = req.url.searchParams.get('select')
-//       if (select === '*') {
-//         return res(ctx.json([sasuke]))
-//       }
-//       return res(ctx.status(500))
-//     })
-//   )
-//   render(<Home />);
-
-//   //grab all the consts for the search bar
-//   const searchBar = await screen.findByRole('textbox');
-//   const pokemonName = 'venusaur';
-
-//   // what the user will actually do, in the search bar, search a name
-//   userEvent.type(searchBar, pokemonName);
-
-//   // the results that user gets back
-//   const pokemon = await screen.findAllByText(pokemonName, { exact: false });
-
-//   const result = pokemon.map((item) => item.textContent);
-
-//   const handleNameCheck = (name) => name.toLowerCase().includes(pokemonName);
-
-//   const hasSameName = result.every(handleNameCheck);
-//   expect(hasSameName).toBe(true);
-// });
