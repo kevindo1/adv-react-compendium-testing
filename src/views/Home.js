@@ -13,12 +13,10 @@ export default function Home() {
       setPokemon(data.results);
       setLoading(false);
     };
-    fetchData();
-  }, [query]);
-
-  if (loading) {
-    <h2>loading</h2>;
-  }
+    if (loading) {
+      fetchData();
+    }
+  }, [query, loading]);
 
   return (
     <div className="App">
